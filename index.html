@@ -1,75 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Académie Sacré Cœur – Préparation Bac Français | Tunis</title>
-  <meta name="description" content="Académie Sacré Cœur à Tunis (Lac 3) – Préparation bilingue au Baccalauréat Français." />
-  <style>
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f9f9f9; color:#333; }
-    header { background:#8b0000; color:white; padding:30px 20px; text-align:center; }
-    header h1 { margin:0; font-size:2.2rem; }
-    header p { font-size:1.1rem; margin-top:10px; }
-    nav { background:#5c0000; padding:10px; text-align:center; }
-    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
-    .lang { position:absolute; top:15px; right:20px; }
-    .lang button { background:white; border:none; padding:6px 10px; margin-left:5px; cursor:pointer; }
-    section { padding:50px 20px; max-width:1000px; margin:auto; }
-    h2 { color:#8b0000; margin-bottom:20px; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .card { background:white; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-    .btn { display:inline-block; background:#8b0000; color:white; padding:12px 20px; border-radius:6px; text-decoration:none; margin-top:15px; }
-    footer { background:#222; color:white; text-align:center; padding:20px; }
-  </style>
-  <script>
-    function setLang(lang) {
-      document.querySelectorAll('[data-fr]').forEach(el => {
-        el.innerText = lang === 'fr' ? el.dataset.fr : el.dataset.ar;
-      });
-    }
-  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Académie Sacré Cœur – Préparation Bac Français</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;color:#333;}
+  header {position:relative;background:url('slider1.jpg') center/cover no-repeat;height:400px;}
+  header .overlay{background:rgba(0,0,0,0.5);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;}
+  header h1{font-size:3rem;margin:0;}
+  header p{font-size:1.3rem;margin:10px 0;}
+  nav{background:#8b0000;padding:15px;position:sticky;top:0;display:flex;justify-content:center;}
+  nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold;}
+  section{padding:60px 20px;max-width:1000px;margin:auto;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+  .card{background:white;padding:20px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+  .btn{background:#8b0000;color:white;padding:12px 22px;text-decoration:none;border-radius:6px;font-weight:bold;}
+  footer{background:#222;color:white;text-align:center;padding:25px;}
+</style>
 </head>
-<body onload="setLang('fr')">
+<body>
 
 <header>
-  <div class="lang">
-    <button onclick="setLang('fr')">FR</button>
-    <button onclick="setLang('ar')">AR</button>
+  <div class="overlay">
+    <img src="logo-asc.png" alt="Logo Académie Sacré Cœur" style="width:120px;margin-bottom:15px;">
+    <h1>Académie Sacré Cœur</h1>
+    <p>Préparation intensive au Bac Français – Lac 3, Tunis</p>
+    <a href="#contact" class="btn">Inscrivez-vous maintenant</a>
   </div>
-  <h1 data-fr="Académie Sacré Cœur" data-ar="أكاديمية القلب المقدس"></h1>
-  <p data-fr="Préparation au Baccalauréat Français – Tunis" data-ar="إعداد للبكالوريا الفرنسية – تونس"></p>
-  <a href="#contact" class="btn" data-fr="S'inscrire maintenant" data-ar="سجل الآن"></a>
 </header>
 
 <nav>
-  <a href="#academie" data-fr="Académie" data-ar="الأكاديمية"></a>
-  <a href="#programmes" data-fr="Programmes" data-ar="البرامج"></a>
-  <a href="#contact" data-fr="Contact" data-ar="اتصل بنا"></a>
+  <a href="#about">À propos</a>
+  <a href="#programmes">Programmes</a>
+  <a href="#avantages">Avantages</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<section id="academie">
-  <h2 data-fr="Notre Académie" data-ar="عن الأكاديمية"></h2>
-  <p data-fr="L’Académie Sacré Cœur, située au Lac 3 à Tunis, est spécialisée dans la préparation au Baccalauréat Français avec un encadrement pédagogique sérieux et personnalisé." data-ar="تقع أكاديمية القلب المقدس في البحيرة 3 بتونس، وهي متخصصة في إعداد التلاميذ للبكالوريا الفرنسية مع متابعة تربوية دقيقة."></p>
+<section id="about">
+  <h2>À propos de l’Académie</h2>
+  <p>Située au Lac 3 à Tunis, l’Académie Sacré Cœur prépare efficacement les élèves au Baccalauréat Français avec une approche personnalisée, des professeurs expérimentés, et une méthodologie qui a fait ses preuves.</p>
+  <div class="cards">
+    <img src="cours1.jpg" alt="Cours intensifs" style="width:100%;border-radius:8px;">
+    <img src="cours2.jpg" alt="Encadrement personnalisé" style="width:100%;border-radius:8px;">
+    <img src="cours3.jpg" alt="Ateliers de révision" style="width:100%;border-radius:8px;">
+  </div>
 </section>
 
 <section id="programmes">
-  <h2 data-fr="Programmes" data-ar="البرامج"></h2>
+  <h2>Nos Programmes</h2>
   <div class="cards">
-    <div class="card" data-fr="Préparation écrite : dissertation et commentaire" data-ar="التحضير للامتحان الكتابي: المقال والتحليل"></div>
-    <div class="card" data-fr="Préparation à l’oral du Bac" data-ar="التحضير للامتحان الشفوي"></div>
-    <div class="card" data-fr="Stages intensifs et révisions" data-ar="دورات مكثفة ومراجعة"></div>
+    <div class="card"><h3>Écrits (Dissertation & Commentaire)</h3><p>Méthodologie complète avec exercices corrigés.</p></div>
+    <div class="card"><h3>Oral du Bac</h3><p>Préparation interactive et simulations réelles.</p></div>
+    <div class="card"><h3>Stages intensifs</h3><p>Révisions concentrées avant les examens.</p></div>
+  </div>
+</section>
+
+<section id="avantages">
+  <h2>Pourquoi nous choisir ?</h2>
+  <div class="cards">
+    <div class="card">✔ Groupes réduits</div>
+    <div class="card">✔ Suivi personnalisé</div>
+    <div class="card">✔ Méthodes efficaces</div>
+    <div class="card">✔ Professeurs qualifiés</div>
   </div>
 </section>
 
 <section id="contact">
-  <h2 data-fr="Contact" data-ar="اتصل بنا"></h2>
-  <p data-fr="Adresse : Lac 3, Tunis" data-ar="العنوان: البحيرة 3، تونس"></p>
-  <p data-fr="Téléphone / WhatsApp : +216 98 168 335" data-ar="الهاتف / واتساب: 21698168335+"></p>
-  <a href="https://wa.me/21698168335" class="btn" data-fr="Contacter sur WhatsApp" data-ar="اتصل عبر واتساب"></a>
+  <h2>Contact & Inscriptions</h2>
+  <p>📍 Adresse: Lac 3, Tunis</p>
+  <p>📞 WhatsApp: +216 98 168 335</p>
+  <p>📧 Email: contact@sacrecoeur.tn</p>
+  <a href="https://wa.me/21698168335" class="btn">Nous contacter sur WhatsApp</a>
 </section>
 
 <footer>
-  <p>© 2025 Académie Sacré Cœur – Lac 3, Tunis</p>
+  <p>© 2025 Académie Sacré Cœur – Tous droits réservés</p>
 </footer>
 
 </body>
