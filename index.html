@@ -6,24 +6,35 @@
 <title>Académie Sacré Cœur – Préparation Bac Français</title>
 <style>
   body{margin:0;font-family:Arial,sans-serif;color:#333;}
-  header {position:relative;background:url('slider1.jpg') center/cover no-repeat;height:400px;}
-  header .overlay{background:rgba(0,0,0,0.5);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;}
-  header h1{font-size:3rem;margin:0;}
-  header p{font-size:1.3rem;margin:10px 0;}
-  nav{background:#8b0000;padding:15px;position:sticky;top:0;display:flex;justify-content:center;}
+  header{position:relative;height:400px;overflow:hidden;}
+  .slider{position:relative;width:100%;height:100%;}
+  .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1s;}
+  .slide.active{opacity:1;}
+  .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;}
+  .overlay img{width:120px;margin-bottom:15px;}
+  .overlay h1{font-size:3rem;margin:0;}
+  .overlay p{font-size:1.3rem;margin:10px 0;}
+  nav{background:#8b0000;padding:15px;position:sticky;top:0;display:flex;justify-content:center;z-index:100;}
   nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold;}
   section{padding:60px 20px;max-width:1000px;margin:auto;}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
   .card{background:white;padding:20px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
   .btn{background:#8b0000;color:white;padding:12px 22px;text-decoration:none;border-radius:6px;font-weight:bold;}
   footer{background:#222;color:white;text-align:center;padding:25px;}
+  /* Bouton WhatsApp flottant */
+  .whatsapp-btn{position:fixed;bottom:25px;right:25px;background:#25d366;color:white;padding:15px 20px;border-radius:50px;font-weight:bold;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:1000;}
 </style>
 </head>
 <body>
 
 <header>
+  <div class="slider">
+    <div class="slide active" style="background-image:url('slider1.jpg');"></div>
+    <div class="slide" style="background-image:url('cours1.jpg');"></div>
+    <div class="slide" style="background-image:url('cours2.jpg');"></div>
+  </div>
   <div class="overlay">
-    <img src="logo-asc.png" alt="Logo Académie Sacré Cœur" style="width:120px;margin-bottom:15px;">
+    <img src="logo-asc.png" alt="Logo Académie Sacré Cœur">
     <h1>Académie Sacré Cœur</h1>
     <p>Préparation intensive au Bac Français – Lac 3, Tunis</p>
     <a href="#contact" class="btn">Inscrivez-vous maintenant</a>
@@ -74,9 +85,22 @@
   <a href="https://wa.me/21698168335" class="btn">Nous contacter sur WhatsApp</a>
 </section>
 
+<a href="https://wa.me/21698168335" class="whatsapp-btn">WhatsApp</a>
+
 <footer>
   <p>© 2025 Académie Sacré Cœur – Tous droits réservés</p>
 </footer>
+
+<script>
+// Slider automatique
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current+1) % slides.length;
+  slides[current].classList.add('active');
+}, 4000);
+</script>
 
 </body>
 </html>
