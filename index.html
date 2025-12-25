@@ -1,106 +1,326 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Académie Sacré Cœur – Préparation Bac Français</title>
-<style>
-  body{margin:0;font-family:Arial,sans-serif;color:#333;}
-  header{position:relative;height:400px;overflow:hidden;}
-  .slider{position:relative;width:100%;height:100%;}
-  .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1s;}
-  .slide.active{opacity:1;}
-  .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;}
-  .overlay img{width:120px;margin-bottom:15px;}
-  .overlay h1{font-size:3rem;margin:0;}
-  .overlay p{font-size:1.3rem;margin:10px 0;}
-  nav{background:#8b0000;padding:15px;position:sticky;top:0;display:flex;justify-content:center;z-index:100;}
-  nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold;}
-  section{padding:60px 20px;max-width:1000px;margin:auto;}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-  .card{background:white;padding:20px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-  .btn{background:#8b0000;color:white;padding:12px 22px;text-decoration:none;border-radius:6px;font-weight:bold;}
-  footer{background:#222;color:white;text-align:center;padding:25px;}
-  /* Bouton WhatsApp flottant */
-  .whatsapp-btn{position:fixed;bottom:25px;right:25px;background:#25d366;color:white;padding:15px 20px;border-radius:50px;font-weight:bold;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:1000;}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASC | Académie Sacré Cœur - Excellence Bac Français</title>
+    
+    <!-- 1. Tailwind CSS (Design moderne et rapide) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Polices Google (Élégance et Modernité) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- 3. FontAwesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 4. AOS Animation Library (Animations au scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Configuration des couleurs personnalisées -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'asc-red': '#8b0000',     /* Rouge Sacré Cœur */
+                        'asc-dark': '#1a1a1a',    /* Noir doux */
+                        'asc-gold': '#d4af37',    /* Doré prestige */
+                        'asc-light': '#f9f9f9',   /* Fond clair */
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Effet de verre (Glassmorphism) pour le menu */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Overlay dégradé sur le héros */
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(139, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+        }
+
+        /* Animation flottante pour le bouton WhatsApp */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+    </style>
 </head>
-<body>
+<body class="font-sans text-gray-700 bg-asc-light overflow-x-hidden">
 
-<header>
-  <div class="slider">
-    <div class="slide active" style="background-image:url('slider1.jpg');"></div>
-    <div class="slide" style="background-image:url('cours1.jpg');"></div>
-    <div class="slide" style="background-image:url('cours2.jpg');"></div>
-  </div>
-  <div class="overlay">
-    <img src="logo-asc.png" alt="Logo Académie Sacré Cœur">
-    <h1>Académie Sacré Cœur</h1>
-    <p>Préparation intensive au Bac Français – Lac 3, Tunis</p>
-    <a href="#contact" class="btn">Inscrivez-vous maintenant</a>
-  </div>
-</header>
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 glass-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo / Nom -->
+            <a href="#" class="text-2xl font-serif font-bold text-asc-red flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> ASC <span class="text-gray-600 text-sm hidden md:inline">| Académie Sacré Cœur</span>
+            </a>
 
-<nav>
-  <a href="#about">À propos</a>
-  <a href="#programmes">Programmes</a>
-  <a href="#avantages">Avantages</a>
-  <a href="#contact">Contact</a>
-</nav>
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-800 hover:text-asc-red font-medium transition">À propos</a>
+                <a href="#programmes" class="text-gray-800 hover:text-asc-red font-medium transition">Programmes</a>
+                <a href="#avantages" class="text-gray-800 hover:text-asc-red font-medium transition">Avantages</a>
+                <a href="#contact" class="px-6 py-2 bg-asc-red text-white rounded-full font-bold hover:bg-red-900 transition shadow-lg transform hover:scale-105">
+                    Contactez-nous
+                </a>
+            </div>
 
-<section id="about">
-  <h2>À propos de l’Académie</h2>
-  <p>Située au Lac 3 à Tunis, l’Académie Sacré Cœur prépare efficacement les élèves au Baccalauréat Français avec une approche personnalisée, des professeurs expérimentés, et une méthodologie qui a fait ses preuves.</p>
-  <div class="cards">
-    <img src="cours1.jpg" alt="Cours intensifs" style="width:100%;border-radius:8px;">
-    <img src="cours2.jpg" alt="Encadrement personnalisé" style="width:100%;border-radius:8px;">
-    <img src="cours3.jpg" alt="Ateliers de révision" style="width:100%;border-radius:8px;">
-  </div>
-</section>
+            <!-- Menu Mobile Button -->
+            <button id="mobile-btn" class="md:hidden text-asc-red text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full shadow-lg border-t">
+            <a href="#about" class="block py-3 px-6 text-gray-800 hover:bg-gray-100">À propos</a>
+            <a href="#programmes" class="block py-3 px-6 text-gray-800 hover:bg-gray-100">Programmes</a>
+            <a href="#avantages" class="block py-3 px-6 text-gray-800 hover:bg-gray-100">Avantages</a>
+            <a href="#contact" class="block py-3 px-6 text-asc-red font-bold hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
 
-<section id="programmes">
-  <h2>Nos Programmes</h2>
-  <div class="cards">
-    <div class="card"><h3>Écrits (Dissertation & Commentaire)</h3><p>Méthodologie complète avec exercices corrigés.</p></div>
-    <div class="card"><h3>Oral du Bac</h3><p>Préparation interactive et simulations réelles.</p></div>
-    <div class="card"><h3>Stages intensifs</h3><p>Révisions concentrées avant les examens.</p></div>
-  </div>
-</section>
+    <!-- HERO SECTION (En-tête) -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Image de fond (Placeholder haute qualité) -->
+        <div class="absolute inset-0 bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
 
-<section id="avantages">
-  <h2>Pourquoi nous choisir ?</h2>
-  <div class="cards">
-    <div class="card">✔ Groupes réduits</div>
-    <div class="card">✔ Suivi personnalisé</div>
-    <div class="card">✔ Méthodes efficaces</div>
-    <div class="card">✔ Professeurs qualifiés</div>
-  </div>
-</section>
+        <div class="relative z-10 text-center px-6 max-w-4xl" data-aos="fade-up">
+            <span class="inline-block py-1 px-3 rounded-full bg-asc-gold text-white text-xs font-bold tracking-widest mb-4 uppercase">Lac 3, Tunis</span>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                Visez l'Excellence au <br/><span class="text-asc-gold">Bac Français</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 font-light">
+                Une préparation d'élite pour garantir votre réussite. Méthodologie rigoureuse, professeurs experts et suivi personnalisé.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#contact" class="px-8 py-4 bg-white text-asc-red font-bold rounded-full shadow-xl hover:bg-gray-100 transition transform hover:-translate-y-1">
+                    Réserver ma place
+                </a>
+                <a href="https://wa.me/21698168335" class="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-asc-red transition">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> Discuter sur WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
 
-<section id="contact">
-  <h2>Contact & Inscriptions</h2>
-  <p>📍 Adresse: Lac 3, Tunis</p>
-  <p>📞 WhatsApp: +216 98 168 335</p>
-  <p>📧 Email: contact@sacrecoeur.tn</p>
-  <a href="https://wa.me/21698168335" class="btn">Nous contacter sur WhatsApp</a>
-</section>
+    <!-- SECTION STATS (Preuve sociale) -->
+    <section class="py-10 bg-white -mt-10 relative z-20 container mx-auto rounded-lg shadow-2xl max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+        <div class="p-4" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-solid fa-users text-4xl text-asc-red mb-2"></i>
+            <h3 class="text-3xl font-bold text-gray-800">100%</h3>
+            <p class="text-sm text-gray-500 uppercase tracking-wide">Taux de Réussite</p>
+        </div>
+        <div class="p-4" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-solid fa-chalkboard-user text-4xl text-asc-red mb-2"></i>
+            <h3 class="text-3xl font-bold text-gray-800">Petits Groupes</h3>
+            <p class="text-sm text-gray-500 uppercase tracking-wide">Suivi Individualisé</p>
+        </div>
+        <div class="p-4" data-aos="fade-up" data-aos-delay="300">
+            <i class="fa-solid fa-book-open text-4xl text-asc-red mb-2"></i>
+            <h3 class="text-3xl font-bold text-gray-800">Expertise</h3>
+            <p class="text-sm text-gray-500 uppercase tracking-wide">Programmes à jour</p>
+        </div>
+    </section>
 
-<a href="https://wa.me/21698168335" class="whatsapp-btn">WhatsApp</a>
+    <!-- A PROPOS -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1427504743055-e99aa31546d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cours" class="rounded-lg shadow-2xl relative z-10 w-full">
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-asc-gold rounded-lg z-0 hidden md:block"></div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 border-4 border-asc-red rounded-lg z-0 hidden md:block"></div>
+                </div>
+            </div>
+            <div class="md:w-1/2" data-aos="fade-left">
+                <h4 class="text-asc-red font-bold uppercase tracking-wider mb-2">À propos de ASC</h4>
+                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-6">L'Excellence au Cœur de Tunis</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Située au prestigieux quartier du <strong>Lac 3</strong>, l’Académie Sacré Cœur n'est pas un simple centre de soutien scolaire. Nous sommes un partenaire de réussite.
+                </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Notre approche pédagogique unique combine rigueur académique et coaching mental pour préparer les élèves aux épreuves écrites et orales du Baccalauréat Français.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700"><i class="fa-solid fa-check-circle text-green-500 mr-3"></i> Enseignants certifiés et expérimentés</li>
+                    <li class="flex items-center text-gray-700"><i class="fa-solid fa-check-circle text-green-500 mr-3"></i> Cadre d'étude moderne et calme</li>
+                    <li class="flex items-center text-gray-700"><i class="fa-solid fa-check-circle text-green-500 mr-3"></i> Simulations d'examens réels</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <p>© 2025 Académie Sacré Cœur – Tous droits réservés</p>
-</footer>
+    <!-- PROGRAMMES -->
+    <section id="programmes" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Nos Programmes</h2>
+                <div class="w-24 h-1 bg-asc-red mx-auto rounded"></div>
+                <p class="mt-4 text-gray-600">Une offre complète adaptée à chaque besoin de l'élève.</p>
+            </div>
 
-<script>
-// Slider automatique
-let slides = document.querySelectorAll('.slide');
-let current = 0;
-setInterval(() => {
-  slides[current].classList.remove('active');
-  current = (current+1) % slides.length;
-  slides[current].classList.add('active');
-}, 4000);
-</script>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-red-100 text-asc-red rounded-full flex items-center justify-center text-2xl mb-6 group-hover:bg-asc-red group-hover:text-white transition">
+                        <i class="fa-solid fa-pen-fancy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Écrits & Méthodologie</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Maîtrise de la dissertation et du commentaire composé. Exercices corrigés type Bac.</p>
+                    <a href="#contact" class="text-asc-red font-bold text-sm hover:underline">En savoir plus →</a>
+                </div>
 
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-red-100 text-asc-red rounded-full flex items-center justify-center text-2xl mb-6 group-hover:bg-asc-red group-hover:text-white transition">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Préparation Oral</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Simulations en conditions réelles, gestion du stress et perfectionnement de l'éloquence.</p>
+                    <a href="#contact" class="text-asc-red font-bold text-sm hover:underline">En savoir plus →</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-red-100 text-asc-red rounded-full flex items-center justify-center text-2xl mb-6 group-hover:bg-asc-red group-hover:text-white transition">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Stages Intensifs</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Sessions accélérées pendant les vacances pour combler les lacunes et exceller.</p>
+                    <a href="#contact" class="text-asc-red font-bold text-sm hover:underline">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & CTA -->
+    <section id="contact" class="py-20 relative bg-asc-dark text-white overflow-hidden">
+        <!-- Decoration de fond -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-asc-red opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-asc-gold opacity-10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-serif font-bold mb-6">Prêt à réussir ?</h2>
+                    <p class="text-gray-300 mb-8 text-lg">Inscrivez-vous maintenant ou contactez-nous pour une séance de diagnostic gratuite.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center text-asc-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Nous trouver</h4>
+                                <p class="text-gray-400">Lac 3, Tunis, Tunisie</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center text-asc-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Appelez-nous</h4>
+                                <p class="text-gray-400">+216 98 168 335</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center text-asc-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Email</h4>
+                                <p class="text-gray-400">contact@sacrecoeur.tn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire stylisé -->
+                <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6 text-asc-red">Contact Rapide</h3>
+                    <form onsubmit="event.preventDefault(); alert('Merci de votre intérêt ! Nous vous recontacterons bientôt.');">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2">Nom de l'élève</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-asc-red" placeholder="Votre nom">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2">Numéro de téléphone</label>
+                            <input type="tel" class="w-full px-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-asc-red" placeholder="+216 ...">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold mb-2">Message / Niveau</label>
+                            <textarea class="w-full px-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-asc-red h-24" placeholder="Ex: Élève en 1ère, besoin d'aide en oral..."></textarea>
+                        </div>
+                        <button class="w-full py-3 bg-asc-red text-white font-bold rounded-lg hover:bg-red-900 transition shadow-lg">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-10 border-t border-gray-800 text-sm">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">&copy; 2025 Académie Sacré Cœur. Tous droits réservés.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook text-xl"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/21698168335" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 float-anim flex items-center gap-2 group transition-all duration-300 hover:pr-6">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap font-bold">Nous contacter</span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialiser les animations
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Gestion du menu mobile
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Fermer le menu mobile au clic d'un lien
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
